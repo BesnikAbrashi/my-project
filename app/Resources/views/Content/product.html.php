@@ -17,6 +17,23 @@ $this->extend('layout.html.php');
     else: ?>
 
     <!-- Product information-->
-
+    <div id="product">
+        <?php
+        /** @var \Pimcore\Model\DataObject\Product $product */
+        $product = $this->href('product')->getElement();
+        ?>
+        <h2><?= $this->escape($product->getName()); ?></h2>
+        <div class="content">
+        <?php
+            $picture = $product->getPicture();
+            if($picture instanceof \Pimcore\Model\Asset\Image):
+                /** @var \Pimcore\Model\Asset\Image $picture */
+                
+            ?>
+                <?= $picture->getThumbnail("content")->getHTML(); ?>
+            <?php endif; ?>
+            <?= $product->getDescription(); ?>
+        </div>
+    </div>
     <?php endif; ?>
 </div>
