@@ -11,4 +11,9 @@ class ContentController extends FrontendController
     {
 
     }
+
+    public function productAction(Request $request)
+    {
+        
+    }
 }
